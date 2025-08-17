@@ -71,6 +71,7 @@ impl<T> Map<T> {
                 prev = index;
             }
         }
+        self.next_vacant = prev;
     }
 
     pub fn iter(&self) -> impl Iterator<Item = (Id<T>, &'_ T)> {
