@@ -7,6 +7,12 @@ pub struct Map<T> {
     next_vacant: Index,
 }
 
+impl<T: core::fmt::Debug> core::fmt::Debug for Map<T> {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        f.debug_map().entries(self.iter()).finish()
+    }
+}
+
 impl<T> Default for Map<T> {
     fn default() -> Self {
         Self {
@@ -111,6 +117,12 @@ enum Entry<T> {
 pub struct Id<T> {
     index: Index,
     typed: core::marker::PhantomData<T>,
+}
+
+impl<T> core::fmt::Debug for Id<T> {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        f.debug_tuple("Id").field(&self.index).finish()
+    }
 }
 
 impl<T> Clone for Id<T> {
