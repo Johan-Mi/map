@@ -121,7 +121,7 @@ pub struct Id<T> {
 
 impl<T> core::fmt::Debug for Id<T> {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-        f.debug_tuple("Id").field(&self.index).finish()
+        write!(f, "Id({})", self.index)
     }
 }
 
